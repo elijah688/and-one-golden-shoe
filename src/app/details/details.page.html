@@ -1,0 +1,27 @@
+<ion-header *ngIf="currentShoe">
+  <ion-toolbar>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{currentShoe.title}}</ion-title>
+    <ion-buttons slot='end'>
+      <ion-back-button defaultHref="list"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen padding scroll-y="false" *ngIf="currentShoe">
+  <ion-slides>
+    <ion-slide *ngFor="let color of currentShoe.colors">
+      <ion-card>
+        <img [src]='color' [alt]='currentShoe.title' />
+          <ion-card-header>
+            <ion-card-title>{{currentShoe.title}}</ion-card-title>
+            <ion-card-subtitle>{{currentShoe.price}}$</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            {{currentShoe.description}}
+          </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
