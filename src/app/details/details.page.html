@@ -1,15 +1,15 @@
 <ion-header *ngIf="currentShoe">
   <ion-toolbar>
-    <ion-buttons slot='start'>
-      <ion-menu-button></ion-menu-button>
+    <ion-buttons  slot='start'>
+      <ion-menu-button color='dark'></ion-menu-button>
     </ion-buttons>
     <ion-title>{{currentShoe.title}}</ion-title>
-    <ion-buttons slot='end'>
-      <ion-back-button defaultHref="list"></ion-back-button>
+    <ion-buttons  slot='end'>
+      <ion-back-button color='dark' defaultHref="list"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content fullscreen padding scroll-y="false" *ngIf="currentShoe">
+<ion-content fullscreen class='ion-padding' scroll-y="false" *ngIf="currentShoe">
   <ion-slides>
     <ion-slide *ngFor="let color of currentShoe.colors">
       <ion-card>
@@ -20,6 +20,14 @@
           </ion-card-header>
           <ion-card-content>
             {{currentShoe.description}}
+            <ion-toolbar>
+              <ion-buttons  class='detail-card__controls ion-padding'>
+                <ion-button (click)="addToCart(color)" [routerLink]="['/cart']" routerLinkActive="active" routerDirection='forward' fill='outline' color='primary'>
+                  <ion-icon name='cart' ></ion-icon>
+                  ADD TO CART
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
           </ion-card-content>
       </ion-card>
     </ion-slide>

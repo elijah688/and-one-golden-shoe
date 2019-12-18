@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color='dark'></ion-menu-button>
     </ion-buttons>
     <ion-title>
       Shoes
@@ -10,6 +10,11 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-fab-button color='secondary'class='chat-button'>
+    <ion-icon  name=chatbubbles></ion-icon>
+  </ion-fab-button>
+
   <ion-list>
     <ion-item [routerLink]="['/details/',s.id]" routerLinkActive="active" routerDirection='forward' *ngFor="let s of shoes">
       <app-shoe 
@@ -20,6 +25,7 @@
       ></app-shoe>
     </ion-item>
   </ion-list>
-  
+
+
  
 </ion-content>

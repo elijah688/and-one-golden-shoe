@@ -1,9 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>cart</ion-title>
+    <ion-buttons slot='start'>
+      <ion-menu-button color='dark' ></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cart</ion-title>
+    <ion-buttons slot='end'>
+      <ion-back-button color='dark' defaultHref='list'></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-list-header>
+      Your Items:
+    </ion-list-header>
 
+    <ion-item *ngFor="let item of cart">
+      <ion-avatar slot="start">
+        <img [src]='item.colors[0]' [alt]='item.title'>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{item.title}}</h2>
+        <h3>{{item.price}}</h3>
+        <p>{{item.description}}</p>
+      </ion-label>
+      <ion-button (click)='removeItem(item.id)' color='danger' fill='outline'>
+        <ion-icon name='close'></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item class='activated'>
+      <ion-label class='ion-text-center'>Your total is: {{ total | currency:'USD' }}</ion-label>
+      <ion-button color='dark' fill='outline'>
+        <ion-icon name='cart'></ion-icon>
+        Buy
+      </ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>

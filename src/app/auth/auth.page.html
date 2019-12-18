@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot='start'>
-      <ion-menu-button ></ion-menu-button>
+      <ion-menu-button color='dark'></ion-menu-button>
     </ion-buttons>
-    <ion-title class='ion-text-center'>auth</ion-title>
+    <ion-title class='ion-text-center'>Authentication</ion-title>
     <ion-buttons slot='end'>
-      <ion-button >
+      <ion-button color='dark'>
         <ion-icon name='mail'></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -13,5 +13,18 @@
 </ion-header>
 
 <ion-content>
-
+  <form [formGroup]='authForm' (ngSubmit)="authenticate()">
+    <ion-item>
+      <ion-label >Email</ion-label>
+      <ion-input formControlName='email' type="text" name="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input formControlName='password'  name="description"></ion-input>
+    </ion-item>
+    <div class='buttons'>
+      <ion-button type="submit" fill='outline'>Sign Up</ion-button>
+      <ion-button type="submit" >Log In</ion-button>
+    </div>
+  </form>
 </ion-content>

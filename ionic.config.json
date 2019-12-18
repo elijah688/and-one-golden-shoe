@@ -1,5 +1,8 @@
 {
   "name": "golden_shoe",
   "integrations": {},
-  "type": "angular"
+  "type": "angular",
+  "defaults": {
+    "styleExts": "sass"
+  }
 }

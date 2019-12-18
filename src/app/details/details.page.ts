@@ -3,16 +3,17 @@ import { ShoeService } from '../list/shoe.service';
 import { ActivatedRoute } from '@angular/router';
 import { Shoe } from '../list/shoe/shoe.model';
 import { Subscription } from 'rxjs';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
-  styleUrls: ['./details.page.scss'],
+  styleUrls: ['./details.page.sass'],
 })
 export class DetailsPage implements OnInit, OnDestroy {
   currentShoe:Shoe;
   private shoeSub:Subscription = new Subscription()
-  constructor(private shoeServ:ShoeService, private route:ActivatedRoute) { }
+  constructor(private shoeServ:ShoeService, private cartServ:CartService , private route:ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params=>{
@@ -27,5 +28,17 @@ export class DetailsPage implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.shoeSub.unsubscribe()
   } 
+
+  addToCart(color:string):void{
+    if(this.currentShoe){
+      this.cartServ.addToCart(this.currentShoe,color)
+      this.cartServ.getCart()
+    }
+    else{
+      return
+    }
+  }
+
+
 
 }

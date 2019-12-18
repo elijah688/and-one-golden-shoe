@@ -46,6 +46,11 @@ export class ShoeService {
     );
   }
 
+  addToCart(shoe:Shoe, color:string):void{
+    const purchase:Shoe = {...shoe, colors: [color]}
+    this._singleShoeSubject.next(purchase);
+  }
+
    get shoesSubject():Observable<Shoe[]>{
      return this._shoesSubject.asObservable();
    }
